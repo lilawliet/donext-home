@@ -43,11 +43,12 @@
   </nav>
   <header>
     <div class="relative md:h-[690px] h-[335px] w-full">
-      <canvas
+      <div class="absolute top-0 left-0 w-full h-full opacity-40 mask"></div>
+      <!-- <canvas
         id="granim-canvas"
         ref="headerBg"
         class="absolute top-0 left-0 w-full h-full opacity-10"
-      ></canvas>
+      ></canvas> -->
       <div class="absolute top-0 left-0 z-10 w-full h-full">
         <div class="container" id="header">
           <div class="intro-text">
