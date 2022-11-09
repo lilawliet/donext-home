@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import BasicHeader from './components/BasicHeader.vue';
 import BasicFooter from './components/BasicFooter.vue';
 
