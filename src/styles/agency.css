@@ -261,6 +261,17 @@ fieldset[disabled] .btn-xl.active {
     }
 }
 
+/* webkit, opera, IE9 （谷歌浏览器）*/
+::selection { 
+    /* background:white;  */
+    color:white; 
+}
+/* mozilla firefox（火狐浏览器） */
+::-moz-selection { 
+    /* background:white;  */
+    color:white; 
+}
+
 header {
     text-align: center;
     color: #fff;
@@ -269,7 +280,7 @@ header {
     background-size: 130vw 130vh, 120vw 120vh, 100vw 150vh, 120vw 130vh;
     background-position: -80vw -80vh, 30vw -20vh, -20vw 20vh, 30vw 20vh;
     animation: 15s moiveAnimation infinite; */
-    background-image: url('@/assets/imgs/header-bg.jpg');
+    /* background-image: url('@/assets/imgs/header-bg.jpg'); */
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -687,7 +698,7 @@ aside.clients img {
 
 section#contact {
     background-color: #222;
-    background-image: url('@/assets/imgs/map-image.png');
+    /* background-image: url('@/assets/imgs/map-image.png'); */
     background-position: center;
     background-repeat: no-repeat;
 }

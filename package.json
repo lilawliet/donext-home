@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "staging": "vue-tsc --noEmit && vite build --mode staging",
     "serve": "vite preview --host",
     "prepare": "husky install",

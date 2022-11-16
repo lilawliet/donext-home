@@ -43,22 +43,28 @@
   </nav>
   <header>
     <div class="relative md:h-[690px] h-[335px] w-full">
-      <div class="absolute top-0 left-0 w-full h-full opacity-40 mask"></div>
-      <!-- <canvas
-        id="granim-canvas"
-        ref="headerBg"
-        class="absolute top-0 left-0 w-full h-full opacity-10"
-      ></canvas> -->
+      <!-- <div class="absolute top-0 left-0 w-full h-full opacity-40 mask"></div> -->
+      <iframe
+        :src="src"
+        frameborder="0"
+        class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30"
+      ></iframe>
+
       <div class="absolute top-0 left-0 z-10 w-full h-full">
         <div class="container" id="header">
-          <div class="intro-text">
-            <div class="intro-heading">Donex Protocol</div>
-            <div class="intro-lead-in">
+          <div class="intro-text mask bg-clip-text">
+            <div class="text-transparent intro-heading">Donex Protocol</div>
+            <div class="text-transparent intro-lead-in">
               Swap, earn, lend, borrow with the most capital efficiency.
             </div>
           </div>
         </div>
       </div>
+      <canvas
+        id="granim-canvas"
+        ref="headerBg"
+        class="absolute top-0 left-0 w-full h-full opacity-60"
+      ></canvas>
     </div>
   </header>
 </template>
@@ -67,6 +73,7 @@
 import { reactive } from 'vue-demi';
 import { onBeforeUnmount, onMounted, ref, toRefs } from 'vue';
 import Granim from 'granim';
+import { baseStaticUrl } from '@/libs/utils';
 
 export default {
   name: 'BaseHeader',
@@ -75,6 +82,7 @@ export default {
     const datas = reactive({
       changeHeaderOn: 300,
       scrollY: 0,
+      src: baseStaticUrl('nebula.html'),
     });
 
     const scrollHandler = () => {
@@ -83,10 +91,8 @@ export default {
 
     const headerBg = ref();
 
-    onMounted(() => {
-      // const imgUrl = baseStaticUrl('src/assets/imgs/header-bg.jpg');
-      // eslint-disable-next-line no-new
-      new Granim({
+    const initGranim = () => {
+      return new Granim({
         element: headerBg.value,
         name: 'second-gradient',
         // image: {
@@ -105,9 +111,6 @@ export default {
         states: {
           'default-state': {
             gradients: [
-              // ['#ff9966', '#ff5e62'],
-              // ['#00F260', '#0575E6'],
-              // ['#e1eec3', '#f05053'],
               ['#B3FFAB', '#12FFF7'],
               ['#ADD100', '#7B920A'],
               ['#1A2980', '#26D0CE'],
@@ -119,6 +122,11 @@ export default {
           },
         },
       });
+    };
+
+    onMounted(() => {
+      // const imgUrl = baseStaticUrl('src/assets/imgs/header-bg.jpg');
+      initGranim();
 
       window.addEventListener('scroll', scrollHandler, false);
     });
